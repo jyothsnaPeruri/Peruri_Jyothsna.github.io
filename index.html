@@ -45,7 +45,7 @@
       background: var(--bg-top);
       color: var(--text);
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
     }
 
     /* ===== CUSTOM CURSOR ===== */
@@ -85,6 +85,7 @@
       position: fixed;
       inset: 0;
       z-index: -2;
+      pointer-events: none;
       background: linear-gradient(160deg,
           #050105 0%,
           #0d0318 20%,
@@ -104,6 +105,7 @@
       height: 60vw;
       background: radial-gradient(circle, rgba(177, 22, 78, 0.12) 0%, transparent 70%);
       animation: floatGlow 8s ease-in-out infinite alternate;
+      pointer-events: none;
     }
 
     .bg-glow-2 {
@@ -115,6 +117,7 @@
       height: 70vw;
       background: radial-gradient(circle, rgba(100, 8, 191, 0.18) 0%, transparent 70%);
       animation: floatGlow 10s ease-in-out infinite alternate-reverse;
+      pointer-events: none;
     }
 
     @keyframes floatGlow {
@@ -318,10 +321,7 @@
       align-items: center;
       gap: 0.6rem;
       border: none;
-      cursor: none;
-    }
-
-    .btn-grad:hover {
+      cursor: pointer;
       box-shadow: 0 0 50px rgba(177, 22, 78, 0.6);
       transform: translateY(-3px) scale(1.02);
     }
@@ -340,10 +340,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      cursor: none;
-    }
-
-    .btn-outline:hover {
+      cursor: pointer;
       border-color: var(--pink);
       background: rgba(177, 22, 78, 0.1);
       transform: translateY(-3px);
@@ -537,6 +534,7 @@
       background: linear-gradient(135deg, rgba(177, 22, 78, 0.05), transparent 50%, rgba(100, 8, 191, 0.05));
       opacity: 0;
       transition: opacity 0.35s;
+      pointer-events: none;
     }
 
     .project-card:hover {
@@ -929,10 +927,10 @@
   <div class="bg-canvas"></div>
   <div class="bg-glow-1"></div>
   <div class="bg-glow-2"></div>
-  <canvas id="particles"></canvas>
+  <canvas id="particles" style="pointer-events:none;"></canvas>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor" id="cursor" style="pointer-events:none;"></div>
+  <div class="cursor-ring" id="cursorRing" style="pointer-events:none;"></div>
 
   <!-- NAV -->
   <nav>
@@ -1049,24 +1047,25 @@
     <div class="section-title">Featured <span>Projects</span></div>
     <div class="projects-grid">
 
-      <div class="project-card reveal">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#1a0530,#3d0a6b);">
-          🌐
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="ptag">React</span><span class="ptag">Node.js</span><span
-              class="ptag">MongoDB</span></div>
-          <div class="project-title">SaaS Dashboard Platform</div>
-          <p class="project-desc">Full-stack analytics dashboard with real-time data, auth, and role-based access.
-            Handles 10k+ concurrent users.</p>
-          <div class="project-links">
-            <a href="#" class="plink live">↗ Live Demo</a>
-            <a href="#" class="plink">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
+     <div class="project-card reveal">
+  <div class="project-thumb" style="background:linear-gradient(135deg,#07111f,#0d1f35);">
+    🌦️
+    <div class="thumb-overlay"></div>
+  </div>
+  <div class="project-body">
+    <div class="project-tags">
+      <span class="ptag">HTML</span>
+      <span class="ptag">CSS</span>
+      <span class="ptag">JavaScript</span>
+    </div>
+    <div class="project-title">WeatherLens</div>
+    <p class="project-desc">Live weather app showing real-time temperature, humidity, wind speed, and 5-day forecast for any city worldwide. Features dynamic backgrounds and °C/°F toggle.</p>
+    <div class="project-links">
+      <a href="https://jyothsnaperuri-weather-app.netlify.app/" class="plink live" target="_blank">↗ Live Demo</a>
+      <a href="https://github.com/jyothsnaPeruri/Weather-app" class="plink" target="_blank">⌥ GitHub</a>
+    </div>
+  </div>
+</div>
       <div class="project-card reveal">
         <div class="project-thumb" style="background:linear-gradient(135deg,#1a0520,#6b0a3d);">
           🛒
@@ -1079,7 +1078,7 @@
           <p class="project-desc">Full-featured e-commerce with cart, payments, order tracking, and admin panel.
             Mobile-first design.</p>
           <div class="project-links">
-            <a href="#" class="plink live">↗ Live Demo</a>
+            <span class="plink live" style="cursor: not-allowed; opacity: 0.6;">↗ Coming Soon</span>
             <a href="#" class="plink">⌥ GitHub</a>
           </div>
         </div>
@@ -1097,29 +1096,13 @@
           <p class="project-desc">WebSocket-powered chat with rooms, typing indicators, message history, and file
             sharing.</p>
           <div class="project-links">
-            <a href="#" class="plink live">↗ Live Demo</a>
+            <span class="plink live" style="cursor: not-allowed; opacity: 0.6;">↗ Coming Soon</span>
             <a href="#" class="plink">⌥ GitHub</a>
           </div>
         </div>
       </div>
 
-      <div class="project-card reveal">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#001a10,#004d30);">
-          🌤️
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="ptag">JavaScript</span><span class="ptag">REST API</span><span
-              class="ptag">CSS3</span></div>
-          <div class="project-title">Weather Dashboard</div>
-          <p class="project-desc">Live weather app using OpenWeather API with 7-day forecast, geo-location, and animated
-            UI.</p>
-          <div class="project-links">
-            <a href="#" class="plink live">↗ Live Demo</a>
-            <a href="#" class="plink">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
+
 
       <div class="project-card reveal">
         <div class="project-thumb" style="background:linear-gradient(135deg,#1a1000,#4d3000);">
@@ -1133,7 +1116,7 @@
           <p class="project-desc">Kanban board with drag-and-drop, team collaboration, deadlines, and real-time sync.
           </p>
           <div class="project-links">
-            <a href="#" class="plink live">↗ Live Demo</a>
+            <span class="plink live" style="cursor: not-allowed; opacity: 0.6;">↗ Coming Soon</span>
             <a href="#" class="plink">⌥ GitHub</a>
           </div>
         </div>
@@ -1153,7 +1136,7 @@
           <p class="project-desc">GPT-powered tool that generates blogs, social posts, and code snippets. Rate limiting
             + auth included.</p>
           <div class="project-links">
-            <a href="#" class="plink live">↗ Live Demo</a>
+            <span class="plink live" style="cursor: not-allowed; opacity: 0.6;">↗ Coming Soon</span>
             <a href="#" class="plink">⌥ GitHub</a>
           </div>
         </div>
@@ -1256,7 +1239,7 @@
         <p>Looking for a dedicated full-stack developer to join your team or collaborate on a project? I'd love to hear
           from you. Let's build something amazing together.</p>
         <div class="social-links">
-          <a href="Jo.jozzie@yahoo.com" class="social-link">
+          <a href="mailto:Jo.jozzie@yahoo.com" class="social-link">
             <div class="social-icon">✉️</div>
             <div>
               <div style="font-size:0.75rem;color:var(--muted);margin-bottom:2px">Email</div>
@@ -1383,12 +1366,13 @@
 
     // ===== NAV SCROLL =====
     window.addEventListener('scroll', () => {
-      document.querySelector('nav').style.background =
-        window.scrollY > 50 ? 'rgba(5,1,5,0.92)' : 'rgba(5,1,5,0.6)';
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(5,1,5,0.95)';
+      } else {
+        nav.style.background = 'rgba(5,1,5,0.6)';
+      }
     });
-
-    // ===== CONTACT =====
-    c  </script>
+  </script>
 </body>
-
 </html>
